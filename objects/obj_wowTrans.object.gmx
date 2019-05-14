@@ -52,7 +52,8 @@
 
 if radius == 2200
 {
-    room_goto(rm_menuMain);
+    room_goto(rm_splash);
+    audio_stop_sound(bgm_winner);
 }
 </string>
           </argument>

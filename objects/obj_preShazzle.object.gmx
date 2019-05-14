@@ -11,25 +11,30 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>301</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_alarm</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>30</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>letters = 0;
+letters2 = 0;
+string1 = "Presents:"
+string2 = "broodroost3r"
+audio_stop_all();
+audio_play_sound(bgm_mainMenu, 1, 0);
+//alarm[0] = 57;
+
+timer = 0;
+</string>
           </argument>
         </arguments>
       </action>
@@ -50,6 +55,43 @@
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>stringA = string_copy(string1,1,letters);
+stringB = string_copy(string2,1,letters2);
+
+//if (letters2 &gt; string_length(string1))
+//{
+letters++;
+//}
+letters2++;
+
+timer += delta_time;
+
+if (timer &gt; 945000) // (0,94 seconden)
+{
+    room_goto_next();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -67,17 +109,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
+            <string>draw_sprite(spr_SplshLogo, 0, room_width / 2, room_height / 2);
+
+var yCenter = room_height / 2;
+
+draw_set_color(c_black);
 draw_set_font(fnt_small);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text(obj_middle.x + 5,obj_middle.y + 5,"Ronan Claes en Kaj Rumpff");
+draw_text(obj_middle.x + 2, yCenter + 250 + 2, stringA);
 
 draw_set_color(c_white);
 draw_set_font(fnt_small);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text(obj_middle.x,obj_middle.y,"Ronan Claes en Kaj Rumpff");
+draw_text(obj_middle.x, yCenter + 250, stringA);
+
+draw_set_color(c_black);
+draw_set_font(fnt_small);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text(obj_middle.x + 2, yCenter - 250 + 2, stringB);
+
+draw_set_color(c_white);
+draw_set_font(fnt_small);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text(obj_middle.x, yCenter - 250, stringB);
+
 </string>
           </argument>
         </arguments>

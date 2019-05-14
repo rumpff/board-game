@@ -66,8 +66,8 @@ if button_a
 
 if (zoom == 1)
 {
-    view_wview += 2;
-    view_hview += 2;
+    //view_wview += 2;
+    //view_hview += 2;
 }
 
 // Super Shake

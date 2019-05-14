@@ -3,20 +3,125 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="5" name="datafiles">
+    <datafiles number="5" name="TweenGMS">
+      <datafile>
+        <name>Starter_Guide.html</name>
+        <exists>-1</exists>
+        <size>57974</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Starter_Guide.html</filename>
+      </datafile>
+      <datafile>
+        <name>Script_Reference.html</name>
+        <exists>-1</exists>
+        <size>100927</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Script_Reference.html</filename>
+      </datafile>
+      <datafile>
+        <name>Project_Downloads.txt</name>
+        <exists>-1</exists>
+        <size>634</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Project_Downloads.txt</filename>
+      </datafile>
+      <datafile>
+        <name>Update_Log.txt</name>
+        <exists>-1</exists>
+        <size>9436</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Update_Log.txt</filename>
+      </datafile>
+      <datafile>
+        <name>Required Changes.txt</name>
+        <exists>-1</exists>
+        <size>10638</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Required Changes.txt</filename>
+      </datafile>
+    </datafiles>
+  </datafiles>
   <NewExtensions>
     <extension index="0">extensions\Super Smash Cam</extension>
+    <extension index="1">extensions\TweenGMS</extension>
+    <extension index="2">extensions\Draw Trail</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Sound FX">
+      <sounds name="Veridian SFX">
+        <sound>sound\snd_jump1_veridian</sound>
+        <sound>sound\snd_jump2_veridian</sound>
+        <sound>sound\snd_punch_veridian</sound>
+        <sound>sound\snd_countdown_veridian</sound>
+      </sounds>
       <sound>sound\snd_jump1</sound>
       <sound>sound\snd_jump2</sound>
       <sound>sound\snd_wind</sound>
       <sound>sound\snd_wind2</sound>
+      <sound>sound\snd_slam</sound>
       <sound>sound\snd_punch</sound>
       <sound>sound\snd_inpact</sound>
       <sound>sound\snd_warp</sound>
       <sound>sound\snd_bweeb</sound>
+      <sound>sound\snd_select</sound>
+      <sound>sound\snd_beep</sound>
       <sound>sound\snd_countdown</sound>
+      <sound>sound\snd_inpactBass</sound>
+      <sound>sound\snd_SuddenDeath</sound>
+      <sound>sound\snd_vTeleport</sound>
+      <sound>sound\snd_error</sound>
+      <sound>sound\snd_deSelect</sound>
       <sounds name="crash FX">
         <sound>sound\snd_Crash_01</sound>
         <sound>sound\snd_Crash_02</sound>
@@ -31,12 +136,17 @@
         <sound>sound\snd_menuValidate</sound>
         <sound>sound\snd_menuBack</sound>
         <sound>sound\snd_menuSelect</sound>
+        <sound>sound\snd_woosh</sound>
       </sounds>
+      <sound>sound\snd_footstep1</sound>
+      <sound>sound\snd_footstep2</sound>
+      <sound>sound\snd_vPreTeleport</sound>
     </sounds>
     <sounds name="Background Music">
       <sound>sound\bgm_mainMenu</sound>
       <sound>sound\bgm_credits</sound>
       <sound>sound\bgm_1</sound>
+      <sound>sound\bgm_PredestinedFate</sound>
       <sound>sound\bgm_winner</sound>
     </sounds>
   </sounds>
@@ -47,36 +157,96 @@
     <sprite>sprites\spr_portal1</sprite>
     <sprite>sprites\spr_portal2</sprite>
     <sprite>sprites\spr_wall</sprite>
-    <sprites name="Monopoly">
-      <sprite>sprites\spr_monopoly_run</sprite>
-      <sprite>sprites\spr_monopoly_jump</sprite>
-      <sprite>sprites\spr_monopoly_fall</sprite>
-      <sprite>sprites\spr_monopoly_idle</sprite>
-      <sprite>sprites\spr_monopoly_dash</sprite>
-      <sprite>sprites\spr_monopoly_man</sprite>
+    <sprites name="Characters">
+      <sprites name="VVVVVV Characters">
+        <sprites name="Veridian">
+          <sprite>sprites\spr_veridian_idle</sprite>
+          <sprite>sprites\spr_veridian_run</sprite>
+          <sprite>sprites\spr_veridian_fall</sprite>
+          <sprite>sprites\spr_veridian_jump</sprite>
+          <sprite>sprites\spr_veridian_dash</sprite>
+          <sprite>sprites\spr_veridianSelectIdle</sprite>
+          <sprite>sprites\spr_veridianSelectActive</sprite>
+        </sprites>
+        <sprites name="Violet">
+          <sprite>sprites\spr_violet_idle</sprite>
+          <sprite>sprites\spr_violet_run</sprite>
+          <sprite>sprites\spr_violet_fall</sprite>
+          <sprite>sprites\spr_violet_jump</sprite>
+          <sprite>sprites\spr_violet_dash</sprite>
+          <sprite>sprites\spr_violetSelectIdle</sprite>
+          <sprite>sprites\spr_violetSelectActive</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="Surfboard">
+        <sprite>sprites\spr_surf_idle</sprite>
+        <sprite>sprites\spr_surf_run</sprite>
+        <sprite>sprites\spr_surf_jump</sprite>
+        <sprite>sprites\spr_surf_fall</sprite>
+        <sprite>sprites\spr_surf_dash</sprite>
+        <sprite>sprites\spr_surfSelectIdle</sprite>
+        <sprite>sprites\spr_surfSelectActive</sprite>
+      </sprites>
+      <sprites name="Skateboard">
+        <sprite>sprites\spr_skate_run</sprite>
+        <sprite>sprites\spr_skate_idle</sprite>
+        <sprite>sprites\spr_skate_jump</sprite>
+        <sprite>sprites\spr_skate_fall</sprite>
+        <sprite>sprites\spr_skate_dash</sprite>
+        <sprite>sprites\spr_skateSelectIdle</sprite>
+        <sprite>sprites\spr_skateSelectActive</sprite>
+      </sprites>
+      <sprites name="Monopoly">
+        <sprite>sprites\spr_monopoly_run</sprite>
+        <sprite>sprites\spr_monopoly_jump</sprite>
+        <sprite>sprites\spr_monopoly_fall</sprite>
+        <sprite>sprites\spr_monopoly_idle</sprite>
+        <sprite>sprites\spr_monopoly_dash</sprite>
+        <sprite>sprites\spr_monopoly_man</sprite>
+        <sprite>sprites\spr_monoSelectActive</sprite>
+        <sprite>sprites\spr_monoSelectIdle</sprite>
+      </sprites>
+      <sprites name="Mens Erger Je Niet">
+        <sprite>sprites\spr_MensErg</sprite>
+        <sprite>sprites\spr_mens_dash</sprite>
+        <sprite>sprites\spr_mens_idle</sprite>
+        <sprite>sprites\spr_mens_run</sprite>
+        <sprite>sprites\spr_mens_jump</sprite>
+        <sprite>sprites\spr_mens_fall</sprite>
+        <sprite>sprites\spr_mens_man</sprite>
+        <sprite>sprites\spr_mensSelectActive</sprite>
+        <sprite>sprites\spr_mensSelectIdle</sprite>
+      </sprites>
+      <sprites name="Chess">
+        <sprite>sprites\sp_chess_1</sprite>
+        <sprite>sprites\sp_chess_2</sprite>
+        <sprite>sprites\sp_chess_3</sprite>
+        <sprite>sprites\sp_chess_4</sprite>
+        <sprite>sprites\sp_chess_5</sprite>
+        <sprite>sprites\sp_chess_6</sprite>
+        <sprite>sprites\sp_chess_7</sprite>
+        <sprite>sprites\sp_chess_8</sprite>
+        <sprite>sprites\sp_chess_9</sprite>
+        <sprite>sprites\sp_chess_10</sprite>
+        <sprite>sprites\sp_chess_11</sprite>
+        <sprite>sprites\sp_chess_12</sprite>
+      </sprites>
+      <sprites name="LoveCharacter">
+        <sprite>sprites\spr_love_idle</sprite>
+        <sprite>sprites\spr_love_jump</sprite>
+        <sprite>sprites\spr_love_dash</sprite>
+        <sprite>sprites\spr_love_fall</sprite>
+        <sprite>sprites\spr_love_run</sprite>
+        <sprite>sprites\spr_loveSelectActive</sprite>
+        <sprite>sprites\spr_loveSelectIdle</sprite>
+      </sprites>
     </sprites>
-    <sprites name="Mens Erger Je Niet">
-      <sprite>sprites\spr_MensErg</sprite>
-      <sprite>sprites\spr_mens_dash</sprite>
-      <sprite>sprites\spr_mens_idle</sprite>
-      <sprite>sprites\spr_mens_run</sprite>
-      <sprite>sprites\spr_mens_jump</sprite>
-      <sprite>sprites\spr_mens_fall</sprite>
-      <sprite>sprites\spr_mens_man</sprite>
-    </sprites>
-    <sprites name="Chess">
-      <sprite>sprites\sp_chess_1</sprite>
-      <sprite>sprites\sp_chess_2</sprite>
-      <sprite>sprites\sp_chess_3</sprite>
-      <sprite>sprites\sp_chess_4</sprite>
-      <sprite>sprites\sp_chess_5</sprite>
-      <sprite>sprites\sp_chess_6</sprite>
-      <sprite>sprites\sp_chess_7</sprite>
-      <sprite>sprites\sp_chess_8</sprite>
-      <sprite>sprites\sp_chess_9</sprite>
-      <sprite>sprites\sp_chess_10</sprite>
-      <sprite>sprites\sp_chess_11</sprite>
-      <sprite>sprites\sp_chess_12</sprite>
+    <sprites name="LevelSelectSplash">
+      <sprite>sprites\spr_monoSplash</sprite>
+      <sprite>sprites\spr_sorrySplash</sprite>
+      <sprite>sprites\spr_chessSplash</sprite>
+      <sprite>sprites\spr_scrabbleSplash</sprite>
+      <sprite>sprites\spr_vSplash</sprite>
     </sprites>
     <sprite>sprites\sprite43</sprite>
     <sprite>sprites\sprite10</sprite>
@@ -95,21 +265,18 @@
     <sprite>sprites\sprite15</sprite>
     <sprite>sprites\spr_DoubleJumpFX</sprite>
     <sprite>sprites\spr_blood</sprite>
-    <sprite>sprites\sprite19</sprite>
-    <sprite>sprites\sprite20</sprite>
     <sprite>sprites\spr_cursor1</sprite>
     <sprite>sprites\spr_cursor2</sprite>
     <sprites name="Shockwaves">
       <sprite>sprites\spr_shockwave1</sprite>
       <sprite>sprites\spr_shockwave_mask</sprite>
     </sprites>
-    <sprite>sprites\button</sprite>
+    <sprite>sprites\spr_button</sprite>
     <sprite>sprites\spr_maskCursor</sprite>
     <sprite>sprites\spr_ChooseCursor</sprite>
     <sprite>sprites\spr_ChooseCursorRotate</sprite>
     <sprite>sprites\spr_ChooseCursor2</sprite>
-    <sprite>sprites\spr_BUTTon</sprite>
-    <sprite>sprites\sprite75</sprite>
+    <sprite>sprites\spr_BUTTonEmpy</sprite>
     <sprite>sprites\sprite76</sprite>
     <sprite>sprites\sprite77</sprite>
     <sprite>sprites\sprite59</sprite>
@@ -124,13 +291,33 @@
     <sprite>sprites\spr_crown</sprite>
     <sprite>sprites\spr_crownMasK</sprite>
     <sprite>sprites\sp_moly</sprite>
+    <sprite>sprites\sp_scrab</sprite>
     <sprite>sprites\sp_none</sprite>
+    <sprite>sprites\spr_none2</sprite>
     <sprite>sprites\sp_sorry</sprite>
+    <sprite>sprites\spr_sorryButt</sprite>
     <sprite>sprites\sp_wall_sorry</sprite>
+    <sprite>sprites\spr_zigzag</sprite>
+    <sprite>sprites\spr_void</sprite>
+    <sprite>sprites\spr_charButton</sprite>
+    <sprite>sprites\spr_charTest</sprite>
+    <sprite>sprites\sprite122_tiles2</sprite>
+    <sprite>sprites\spr_red32</sprite>
+    <sprite>sprites\spr_vScreenFlash</sprite>
+    <sprite>sprites\spr_VTrans</sprite>
+    <sprite>sprites\spr_particle</sprite>
+    <sprite>sprites\sprite129</sprite>
+    <sprite>sprites\spr_SplshLogo</sprite>
+    <sprite>sprites\spr_miniControllerHelp</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Background Levels">
+      <background>background\bg_tegels</background>
+      <background>background\bg_wood</background>
+      <background>background\bg_wood2</background>
       <background>background\bg_chess</background>
+      <background>background\bg_grass</background>
+      <background>background\bg_chessNew</background>
     </backgrounds>
     <backgrounds name="Background Colors">
       <background>background\bgC_dkred</background>
@@ -143,16 +330,72 @@
     </backgrounds>
     <background>background\bg_Grid</background>
     <background>background\bg_party</background>
-    <background>background\bg_adirondack_dusty_canyon</background>
-    <background>background\bg_wood</background>
+    <background>background\background12</background>
+    <background>background\tile_V6</background>
+    <background>background\BG_v6</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_death.gml</script>
     <script>scripts\scr_player2ded.gml</script>
+    <script>scripts\scr_player2dedKP.gml</script>
+    <script>scripts\scr_player1dedKP.gml</script>
     <script>scripts\scr_playerded.gml</script>
     <script>scripts\scr_trans.gml</script>
     <script>scripts\scr_trans2.gml</script>
+    <scripts name="TweenGMS">
+      <scripts name="Core">
+        <script>scripts\Ease.gml</script>
+        <script>scripts\TweenNull.gml</script>
+        <script>scripts\TweenFire.gml</script>
+        <script>scripts\TweenCreate.gml</script>
+        <script>scripts\TweenPlay.gml</script>
+        <script>scripts\TweenPause.gml</script>
+        <script>scripts\TweenResume.gml</script>
+        <script>scripts\TweenStop.gml</script>
+        <script>scripts\TweenFinish.gml</script>
+        <script>scripts\TweenFinishDelay.gml</script>
+        <script>scripts\TweenReverse.gml</script>
+        <script>scripts\TweenDestroy.gml</script>
+        <script>scripts\TGMS_TweenBool.gml</script>
+        <script>scripts\TGMS_Callback.gml</script>
+        <script>scripts\TGMS_Event.gml</script>
+        <script>scripts\TGMS_TweenGet.gml</script>
+        <script>scripts\TGMS_TweenSet.gml</script>
+        <script>scripts\TGMS_Utility.gml</script>
+        <script>scripts\SharedTweener.gml</script>
+      </scripts>
+      <scripts name="Eases and Properties">
+        <script>scripts\Default_Ease_Algorithms.gml</script>
+        <script>scripts\Default_Property_Setters.gml</script>
+        <script>scripts\Default_Property_Setters_Ext.gml</script>
+      </scripts>
+      <scripts name="Extra (Not Required)">
+        <script>scripts\TPExt.gml</script>
+        <script>scripts\TweenCalc.gml</script>
+        <script>scripts\TweenStep.gml</script>
+        <script>scripts\TweenDefault.gml</script>
+        <script>scripts\TweenPath.gml</script>
+        <script>scripts\TGMS_TweenSimple.gml</script>
+        <script>scripts\TGMS_TweenDataStructure.gml</script>
+        <script>scripts\TGMS_TweenView.gml</script>
+        <script>scripts\TGMS_TweenBackground.gml</script>
+        <script>scripts\TGMS_TweenTile.gml</script>
+        <script>scripts\TGMS_TweenSystem.gml</script>
+      </scripts>
+      <scripts name="Deprecated (Please Remove)">
+        <script>scripts\TweenCopy.gml</script>
+        <script>scripts\TweenDefine.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="Trail">
+      <script>scripts\draw_trail.gml</script>
+      <script>scripts\trail_init.gml</script>
+      <script>scripts\draw_trail_ext.gml</script>
+      <script>scripts\trail_calculate.gml</script>
+      <script>scripts\trail_destroy.gml</script>
+    </scripts>
+    <script>scripts\scr_gameReset.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_small</font>
@@ -162,6 +405,9 @@
     <font>fonts\fnt_COM</font>
   </fonts>
   <objects name="objects">
+    <objects name="TweenGMS">
+      <object>objects\obj_SharedTweener</object>
+    </objects>
     <object>objects\obj_platform</object>
     <object>objects\obj_moveplatform</object>
     <object>objects\obj_portal</object>
@@ -174,13 +420,16 @@
     <object>objects\obj_blood</object>
     <object>objects\obj_cursor1</object>
     <object>objects\obj_cursor2</object>
+    <object>objects\obj_mens_butt</object>
     <object>objects\obj_player1Spawn</object>
     <object>objects\obj_player2Spawn</object>
     <object>objects\obj_moly</object>
     <object>objects\obj_sorry</object>
+    <object>objects\obj_scrab</object>
     <object>objects\obj_wall_invisible</object>
+    <object>objects\obj_wal_invisible2</object>
     <object>objects\obj_wall_sorry</object>
-    <object>objects\obj_scoreKeeperDebug</object>
+    <object>objects\obj_scoreTimeKeeper</object>
     <object>objects\obj_preShazzle</object>
     <object>objects\obj_name_middle</object>
     <object>objects\obj_name_middle_shadow</object>
@@ -193,15 +442,12 @@
     <object>objects\obj_shockwave</object>
     <object>objects\obj_shockwave2</object>
     <objects name="Main Menu">
+      <object>objects\obj_MenuButton</object>
       <object>objects\obj_MenuButtonStart</object>
       <object>objects\obj_MenuButtonExit</object>
       <object>objects\obj_MenuButtonOptions</object>
       <object>objects\obj_MenuButtonOther</object>
       <object>objects\obj_MenuButtonBack</object>
-      <objects name="Play">
-        <object>objects\obj_PlayButtonCustom</object>
-        <object>objects\obj_PlayButtonQuick</object>
-      </objects>
       <objects name="Options">
         <object>objects\obj_OptionsButtonBGM</object>
         <object>objects\obj_OptionsButtonFullscreen</object>
@@ -210,20 +456,46 @@
         <object>objects\obj_MenuButtonCredits</object>
         <object>objects\obj_MenuButtonCont</object>
         <object>objects\obj_ContHelp</object>
-        <object>objects\obj_KeyHelp</object>
       </objects>
       <objects name="Exit">
-        <object>objects\obj_ExitButtonDown</object>
-        <object>objects\obj_ExitButtonUp</object>
         <object>objects\obj_ExitButtonYes</object>
         <object>objects\obj_ExitButtonNo</object>
       </objects>
       <object>objects\obj_controllerCursor</object>
       <object>objects\obj_keyboardCursor</object>
       <object>objects\obj_controllerPllayerchoose</object>
-      <object>objects\obj_controllerMapChoose</object>
       <object>objects\obj_keyPlayerchoose</object>
+      <object>objects\obj_controllerMapChoose</object>
       <object>objects\obj_BGMMainMenu</object>
+      <objects name="LevelSelect">
+        <object>objects\obj_levelButtonController</object>
+        <object>objects\obj_levelButton</object>
+        <object>objects\obj_levelSelect</object>
+        <object>objects\obj_levelDrawer</object>
+      </objects>
+      <objects name="Character Selection">
+        <object>objects\obj_charSelectContinue</object>
+        <object>objects\obj_selectController</object>
+        <objects name="Player1CharSelect">
+          <object>objects\obj_charButtonController1</object>
+          <object>objects\obj_charButton1</object>
+          <object>objects\obj_charSelect1</object>
+          <object>objects\obj_charDrawer1</object>
+          <object>objects\obj_charDrawerEffect1</object>
+        </objects>
+        <objects name="Player2CharSelect">
+          <object>objects\obj_charButtonController2</object>
+          <object>objects\obj_charButton2</object>
+          <object>objects\obj_charSelect2</object>
+          <object>objects\obj_charDrawer2</object>
+          <object>objects\obj_charDrawerEffect2</object>
+        </objects>
+      </objects>
+      <objects name="VVVVVV Intro">
+        <object>objects\obj_VIntroController</object>
+        <object>objects\obj_VIntroFlash</object>
+        <object>objects\obj_VIntroFlash2</object>
+      </objects>
     </objects>
     <objects name="Chess">
       <object>objects\obj_chess_1</object>
@@ -250,11 +522,9 @@
     <object>objects\object50</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_monopoly_butt</object>
-    <object>objects\obj_mens_butt</object>
     <object>objects\obj_MonoLVLbutt</object>
     <object>objects\obj_sorryLVLButt</object>
     <object>objects\obj_chessLVLButt</object>
-    <object>objects\obj_selectController</object>
     <object>objects\obj_selectController2</object>
     <object>objects\obj_viewController</object>
     <object>objects\obj_viewPlayer</object>
@@ -270,9 +540,35 @@
     <object>objects\obj_realcrowndude</object>
     <object>objects\obj_stopher</object>
     <object>objects\obj_wowTrans</object>
+    <object>objects\obj_wowTransNext</object>
+    <object>objects\obj_wowTransExit</object>
+    <object>objects\obj_wowTransArenaEnter</object>
+    <object>objects\obj_VTransArenaEnter</object>
     <object>objects\obj_wowTrans2</object>
     <object>objects\obj_wowTrans3</object>
+    <object>objects\obj_pauseGame</object>
+    <object>objects\obj_pauseMenu</object>
+    <object>objects\obj_zoomInEffect</object>
+    <object>objects\obj_zoomInEffectReverse</object>
+    <object>objects\obj_zoomOutEffect</object>
+    <object>objects\obj_zoomOutEffectReverse</object>
+    <object>objects\obj_previousRoomSetter</object>
+    <object>objects\obj_MainMenuAnimeController</object>
+    <object>objects\obj_levelResetter</object>
+    <object>objects\obj_debugTools</object>
+    <object>objects\obj_SuddenDeath</object>
+    <object>objects\obj_RumbleShort</object>
+    <object>objects\obj_RumbleStop</object>
+    <object>objects\obj_screenshake</object>
+    <object>objects\obj_killPlain</object>
+    <object>objects\obj_particle</object>
+    <object>objects\obj_IntroKnal</object>
+    <object>objects\obj_tutorialController</object>
+    <object>objects\obj_centerview</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline0</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_initialize</room>
     <room>rooms\rm_splash</room>
@@ -293,12 +589,19 @@
       <room>rooms\rm_arena_chessold</room>
       <room>rooms\rm_arena_moly</room>
       <room>rooms\rm_arena_sorry</room>
+      <room>rooms\rm_arena_scrabble</room>
       <room>rooms\rm_arena_1</room>
       <room>rooms\rm_arena_2</room>
       <room>rooms\rm_arena_3</room>
+      <rooms name="Special Arena's">
+        <room>rooms\rm_pre_V</room>
+        <room>rooms\rm_arena_V</room>
+      </rooms>
     </rooms>
+    <room>rooms\rm_pause</room>
     <room>rooms\rm_1</room>
     <room>rooms\rm_winnerScreen</room>
+    <room>rooms\testRoom</room>
     <room>rooms\rm_2</room>
     <room>rooms\rm_Room</room>
   </rooms>

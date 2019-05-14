@@ -30,6 +30,8 @@ alarm[0] = 60;
 alarm[1] = 120;
 alarm[2] = 180;
 alarm[3] = 240;
+
+NoMoreChange = false;
 </string>
           </argument>
         </arguments>
@@ -76,7 +78,7 @@ alarm[3] = 240;
           <argument>
             <kind>1</kind>
             <string>counter = 1;
-audio_play_sound(snd_bweeb,1,0);
+audio_play_sound(snd,1,0);
 </string>
           </argument>
         </arguments>
@@ -100,7 +102,7 @@ audio_play_sound(snd_bweeb,1,0);
           <argument>
             <kind>1</kind>
             <string>counter = 2;
-audio_play_sound(snd_bweeb,1,0);
+audio_play_sound(snd,1,0);
 </string>
           </argument>
         </arguments>
@@ -124,7 +126,7 @@ audio_play_sound(snd_bweeb,1,0);
           <argument>
             <kind>1</kind>
             <string>counter = 3;
-audio_play_sound(snd_bweeb,1,0);
+audio_play_sound(snd,1,0);
 </string>
           </argument>
         </arguments>
@@ -147,15 +149,39 @@ audio_play_sound(snd_bweeb,1,0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if counter == 0
+            <string>if (!NoMoreChange)
 {
-    if global.PlayerDeath == 2
+    if ((global.Player1Profile == 4 || global.Player1Profile == violet) &amp;&amp; PlayerDeath == 1) // VVVVVV Character
     {
-        instance_create(x,y,obj_player2)
+        snd = snd_countdown_veridian;
+        
+    }    
+    else if ((global.Player2Profile == 4 || global.Player2Profile == violet) &amp;&amp; PlayerDeath == 2) // VVVVVV Character
+    {
+        snd = snd_countdown_veridian;
+        
     }
-    else if global.PlayerDeath == 1
+    else
     {
-        instance_create(x,y,obj_player)
+        snd = snd_bweeb
+    }
+    PlayerDeathFinal = PlayerDeath;
+    NoMoreChange = true;
+}
+else // Nothing special
+{
+    snd = snd_bweeb;
+}
+
+if counter == 0
+{
+    if (PlayerDeathFinal == 2)
+    {
+        instance_create(x,y,obj_player2);
+    }
+    else if (PlayerDeathFinal == 1)
+    {
+        instance_create(x,y,obj_player);
     }
     instance_destroy();
 }

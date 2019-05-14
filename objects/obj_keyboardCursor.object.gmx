@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !global.debug
+            <string>// DIT IS EEN MISBAKSEL EN MAG NOOIT GEBRUIKT WORDEN
+instance_destroy();
+
+if !global.debug
 {
     instance_destroy();
 }

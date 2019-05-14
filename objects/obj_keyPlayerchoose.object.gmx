@@ -32,6 +32,8 @@ Csize = 100;
 x = room_width / 2
 
 image_angle = 180
+
+gamepad_set_axis_deadzone(1,0.3);
 </string>
           </argument>
         </arguments>
@@ -54,40 +56,33 @@ image_angle = 180
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.KeyChoose = false
+            <string>key_B = gamepad_button_check_pressed(1,gp_face2);
+
+
+if (key_B)
 {
-key_L = keyboard_check(vk_left)
-key_R = keyboard_check(vk_right)
-key_S = keyboard_check_pressed(vk_space)
+    audio_play_sound(snd_menuBack,1,0);
+    room_goto(rm_menuMain);
+}
+
+if global.KeyChoose == false
+{
+
+key_S = gamepad_button_check_pressed(1,gp_face1);
 // Putting the position of the Lstick in 2 variables
-//XX = 1.77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777;
+CursorX = gamepad_axis_value(1,gp_axislh) * 1.77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777;
 
 // Putting the object on the right position
-//OldX = room_width / 2  // + (XX * Multiplier);
-y = (room_height / 4) + (room_height / 2)
+x = room_width / 2 + (CursorX * Multiplier);
+y = room_height / 4
 
-//gamepad_button_check(0,gp_face1)
-//{
-//Csize = 5;
-//}
-//gamepad_button_check_released(0,gp_face1)
-//{
-//Csize = 15;
-//}
-
-if (key_L) &amp;&amp; !keyboard_check(vk_right)
+gamepad_button_check(1,gp_face1)
 {
-    x = (room_width / 2) - 480;
+Csize = 5;
 }
-
-if (key_R) &amp;&amp; !keyboard_check(vk_left)
+gamepad_button_check_released(1,gp_face1)
 {
-    x = (room_width / 2) + 480;
-}
-
-if !keyboard_check(vk_left) &amp;&amp; !keyboard_check(vk_right)
-{
-    x = (room_width / 2);
+Csize = 15;
 }
 
 if (key_S)
@@ -122,6 +117,14 @@ if (key_S)
         }
 }
 }
+
+
+
+
+
+// Putting the object on the right position
+//OldX = room_width / 2  // + (XX * Multiplier);
+y = (room_height / 4) + (room_height / 2)
 </string>
           </argument>
         </arguments>

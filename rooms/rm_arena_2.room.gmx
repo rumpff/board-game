@@ -161,7 +161,7 @@
     <instance objName="obj_wall" x="896" y="480" name="inst_91752183" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="928" y="480" name="inst_FB7A3B8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="960" y="480" name="inst_95CF65D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_scoreKeeperDebug" x="320" y="320" name="inst_05BF7BB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_scoreTimeKeeper" x="320" y="320" name="inst_05BF7BB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="672" y="1088" name="inst_FD79E1FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="640" y="1088" name="inst_EF63A882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="608" y="1088" name="inst_26AAD351" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

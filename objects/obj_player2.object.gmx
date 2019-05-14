@@ -44,6 +44,9 @@ dash = 0;
 VDashSpeed = 75;
 DashGround = 0;
 
+ii = 0; // the floor of the current image number
+iiPrev = -1;
+
 x = obj_player2Spawn.x;
 y = obj_player2Spawn.y;
 
@@ -56,29 +59,138 @@ vsp = -jumpspeed;
 // if the player choose: Monopoly
 if (global.Player2Profile = 1)
 {
-sprite_idle =   spr_monopoly_idle;
-sprite_run =    spr_monopoly_run;
-sprite_jump =   spr_monopoly_jump;
-sprite_fall =   spr_monopoly_fall;
-sprite_dash =   spr_monopoly_dash;
+    sprite_idle =   spr_monopoly_idle;
+    sprite_run =    spr_monopoly_run;
+    sprite_jump =   spr_monopoly_jump;
+    sprite_fall =   spr_monopoly_fall;
+    sprite_dash =   spr_monopoly_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+        
+    stepFrame1 = 0;
+    stepFrame2 = 8;
 }
 // if the player choose: Mens Erger Je Niet
-if (global.Player2Profile = 2)
+else if (global.Player2Profile = 2)
 {
-sprite_idle =   spr_mens_idle;
-sprite_run =    spr_mens_run;
-sprite_jump =   spr_mens_jump;
-sprite_fall =   spr_mens_fall;
-sprite_dash =   spr_mens_dash;
+    sprite_idle =   spr_mens_idle;
+    sprite_run =    spr_mens_run;
+    sprite_jump =   spr_mens_jump;
+    sprite_fall =   spr_mens_fall;
+    sprite_dash =   spr_mens_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 8;
 }
-// if the debug mode is on
-if (global.Player2Profile = 0)
+// if the player choose: Love
+else if (global.Player2Profile = 3)
 {
-sprite_idle =   spr_player_idle;
-sprite_run =    spr_player_run;
-sprite_jump =   spr_player_jump;
-sprite_fall =   spr_player_fall;
-sprite_dash =   spr_player_dash;
+    sprite_idle =   spr_love_idle;
+    sprite_run =    spr_love_run;
+    sprite_jump =   spr_love_jump;
+    sprite_fall =   spr_love_fall;
+    sprite_dash =   spr_love_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = -1;
+    stepFrame2 = 1;
+}
+// if the player choose: Veridian
+else if (global.Player2Profile = 4)
+{
+    sprite_idle =   spr_veridian_idle;
+    sprite_run =    spr_veridian_run;
+    sprite_jump =   spr_veridian_jump;
+    sprite_fall =   spr_veridian_fall;
+    sprite_dash =   spr_veridian_dash;
+    
+    sound_jump1 = snd_jump1_veridian;
+    sound_jump2 = snd_jump2_veridian;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 2;
+}
+// if the player choose: Violet
+else if (global.Player2Profile = violet)
+{
+    sprite_idle =   spr_violet_idle;
+    sprite_run =    spr_violet_run;
+    sprite_jump =   spr_violet_jump;
+    sprite_fall =   spr_violet_fall;
+    sprite_dash =   spr_violet_dash;
+    
+    sound_jump1 = snd_jump1_veridian;
+    sound_jump2 = snd_jump2_veridian;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 2;
+}
+// if the player choose: surfboard
+else if (global.Player2Profile = surfboard)
+{
+    sprite_idle =   spr_surf_idle;
+    sprite_run =    spr_surf_run;
+    sprite_jump =   spr_surf_jump;
+    sprite_fall =   spr_surf_fall;
+    sprite_dash =   spr_surf_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1.8;
+    
+    stepFrame1 = 6;
+    stepFrame2 = 21;
+}
+// if the player choose: skateboard
+else if (global.Player2Profile = skateboard)
+{
+    sprite_idle =   spr_skate_idle;
+    sprite_run =    spr_skate_run;
+    sprite_jump =   spr_skate_jump;
+    sprite_fall =   spr_skate_fall;
+    sprite_dash =   spr_skate_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1.8;
+    
+    stepFrame1 = 10;
+    stepFrame2 = 21;
+}
+// if the player somehow didn't choose a character
+else
+{
+    sprite_idle =   spr_player_idle;
+    sprite_run =    spr_player_run;
+    sprite_jump =   spr_player_jump;
+    sprite_fall =   spr_player_fall;
+    sprite_dash =   spr_player_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = -1;
+    stepFrame2 = -1;
 }
 
 gamepad_set_axis_deadzone(0,0.3);
@@ -111,6 +223,7 @@ global.ShockDeath = 1;
             <string>DashGround = 0
 view_yview = 0
 sprite_index = sprite_idle;
+image_speed = 1;
 </string>
           </argument>
         </arguments>
@@ -138,6 +251,13 @@ alarm[1] = 15;
 audio_stop_sound(snd_wind2);
 audio_play_sound(snd_inpact,1,0);
 sprite_index = sprite_dash;
+image_speed = 0;
+
+instance_create(x,y,obj_RumbleShort);
+with(obj_RumbleShort) gpID = 0;
+with(obj_RumbleShort) amount = 0.6;
+
+with(obj_screenshake) yY += 50;
 </string>
           </argument>
         </arguments>
@@ -161,8 +281,8 @@ sprite_index = sprite_dash;
           <argument>
             <kind>1</kind>
             <string>//Get the player's input
-key_right = (gamepad_axis_value(0,gp_axislh) &gt; 0);
-key_left = -(gamepad_axis_value(0,gp_axislh) &lt; 0);
+key_right = (gamepad_axis_value(0,gp_axislh) &gt; 0) || (gamepad_button_check(0, gp_padr));
+key_left = -(gamepad_axis_value(0,gp_axislh) &lt; 0 || (gamepad_button_check(0, gp_padl)));
 key_jump = gamepad_button_check_pressed(0,gp_face1);
 key_jump_held = gamepad_button_check(0,gp_face1);
 key_down = gamepad_button_check(0,gp_face3) || gamepad_button_check(0,gp_face2);
@@ -189,12 +309,12 @@ if (key_jump) &amp;&amp; (jumps &gt; 0) &amp;&amp; (!key_down)
 {
     if (jumps == 2)
     {
-        audio_play_sound(snd_jump1,1,0)
+        audio_play_sound(sound_jump1,1,0)
     }
     if (jumps == 1)
     {
         instance_create(obj_player2.x+0,obj_player2.y+32,obj_doubleJumpFX)
-        audio_play_sound(snd_jump2,1,0)
+        audio_play_sound(sound_jump2,1,0)
     }
     jumps -= 1;
     vsp = -jumpspeed;
@@ -269,6 +389,11 @@ if (place_meeting(x,y+vsp,obj_player))
 
 }
 
+// Collison with kill plain
+if (place_meeting(x, y, obj_killPlain))
+{
+    scr_player1dedKP();
+}
 
 //Animate
 if (move!=0) image_xscale = move;
@@ -277,13 +402,30 @@ if (place_meeting(x,y+1,obj_wall))
     if (move!=0) 
     {
         sprite_index = sprite_run; 
-        image_speed = 1;
+        image_speed = imageSpeed;
     }
-    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = 0.5;
+    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = imageSpeed / 2;
 }
 else
 {
     if (vsp &lt; 0) sprite_index = sprite_jump; else if (dash = 1) sprite_index = sprite_dash; else sprite_index = sprite_fall;
+}
+// Control the footstep sounds
+if (sprite_index = sprite_run)
+{
+    ii = floor(image_index);
+    if (ii != iiPrev)
+    {
+        if (ii == stepFrame1)
+        {
+            audio_play_sound(snd_footstep1, 1, 0);
+        }
+        else if (ii == stepFrame2)
+        {
+            audio_play_sound(snd_footstep2, 1, 0);
+        }
+    }
+    iiPrev = ii;
 }
 }
 

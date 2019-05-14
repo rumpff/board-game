@@ -29,26 +29,66 @@
 
 if global.Winner = 1
 {
-    if global.Player1Profile = 1
+    if global.Player1Profile = monopoly
     {
         sprite_index = spr_monopoly_idle;
     }
-    else if global.Player1Profile = 2
+    else if global.Player1Profile = mens
     {
         sprite_index = spr_mens_idle;
+    }
+    else if global.Player1Profile = love
+    {
+        sprite_index = spr_love_idle;
     }   
+    else if global.Player1Profile = veridian
+    {
+        sprite_index = spr_veridian_idle;
+    } 
+    else if global.Player1Profile = violet
+    {
+        sprite_index = spr_violet_idle;
+    }
+    else if global.Player1Profile = surfboard
+    {
+        sprite_index = spr_surf_idle;
+    }
+    else if global.Player1Profile = skateboard
+    {
+        sprite_index = spr_skate_idle;
+    } 
 }
 
 if global.Winner = 2
 {
-    if global.Player2Profile = 1
+    if global.Player2Profile = monopoly
     {
         sprite_index = spr_monopoly_idle;
     }
-    else if global.Player2Profile = 2
+    else if global.Player2Profile = mens
     {
         sprite_index = spr_mens_idle;
+    }
+    else if global.Player2Profile = love
+    {
+        sprite_index = spr_love_idle;
     }   
+    else if global.Player2Profile = veridian
+    {
+        sprite_index = spr_veridian_idle;
+    } 
+    else if global.Player2Profile = violet
+    {
+        sprite_index = spr_violet_idle;
+    }
+    else if global.Player2Profile = surfboard
+    {
+        sprite_index = spr_surf_idle;
+    }  
+    else if global.Player2Profile = skateboard
+    {
+        sprite_index = spr_skate_idle;
+    }  
 }
 </string>
           </argument>

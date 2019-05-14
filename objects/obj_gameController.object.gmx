@@ -30,7 +30,37 @@ global.Player2Score = 0;
 almost = false;
 Salmost = false;
 finish = false;
+NewLimitReached = false;
 pitch = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check which bgm must be played
+if (room == rm_arena_V)
+{
+    global.BGMIndex = bgm_PredestinedFate
+}
+else
+{
+    global.BGMIndex = bgm_1
+}
 </string>
           </argument>
         </arguments>
@@ -57,82 +87,118 @@ pitch = 1;
 {
     if (global.BGM = 1)
     {
-        audio_sound_pitch(bgm_1,pitch);
-        if !audio_is_playing(bgm_1)
+        audio_sound_pitch(global.BGMIndex ,pitch);
+        if !audio_is_playing(global.BGMIndex)
         {
-            audio_sound_pitch(bgm_1,pitch);
-            audio_sound_gain(bgm_1,0.3,0);
-            audio_play_sound(bgm_1,1,0);
+            if (global.BGMIndex == bgm_PredestinedFate)
+            {
+                audio_sound_gain(global.BGMIndex ,0.85,0);
+            }
+            else if (global.BGMIndex == bgm_1)
+            {
+                audio_sound_gain(global.BGMIndex ,0.3,0);
+            }
+            audio_sound_pitch(global.BGMIndex ,pitch);
+            audio_play_sound(global.BGMIndex ,1,0);
         }
     }
-    // pause screen
-    if (keyboard_check_pressed(vk_escape)) || (gamepad_button_check_pressed(0, gp_start))
+   
+    if ((global.Player1Score = global.ScoreCap) || (global.Player2Score == global.ScoreCap))
     {
-        instance_create(x,y,obj_pause);
-    }
-
-
-
-}
-
-
-
-if ((global.Player1Score = global.ScoreCap) || (global.Player2Score == global.ScoreCap))
-{
-    instance_create(x,y,obj_GameWonFade);
-    room_speed = 15
-}
-
-
-if ((global.Player1Score = global.ScoreCap - 1) || (global.Player2Score == global.ScoreCap - 1))
-{
-almost = true;
-}
-
-if ((global.Player1Score = global.ScoreCap - 1) &amp;&amp; (global.Player2Score == global.ScoreCap - 1))
-{
-Salmost = true;
-almost = false;
-}
-
-if ((global.Player1Score = global.ScoreCap) || (global.Player2Score == global.ScoreCap))
-{
-finish = true;
-
-    if global.Player1Score = global.ScoreCap
-    {
-        global.Winner = 1
+        instance_create(x,y,obj_GameWonFade);
+        room_speed = 15
     }
     
-    if global.Player2Score = global.ScoreCap
+    
+    if ((global.Player1Score = global.ScoreCap - 1) || (global.Player2Score == global.ScoreCap - 1))
     {
-        global.Winner = 2
+    almost = true;
     }
-}
-
-if (almost == true) 
-{
-        if (pitch != 1.5)
+    else
     {
-        pitch += 0.001
+        almost = false;
     }
-    view_angle = choose(-1, 0, 1);
-}  
-
-if (Salmost == true) 
-{
-        if (pitch != 2)
+    
+    if ((global.Player1Score = global.ScoreCap - 1) &amp;&amp; (global.Player2Score == global.ScoreCap - 1))
     {
-        pitch += 0.001
+    Salmost = true;
+    almost = false;
     }
-    view_angle = choose(-4, -2, -1, 0, 1, 2, 4);
-}
-
-if (finish == true) 
-{
-    pitch -= 0.06
-    view_angle = 0;
-}            
+    else
+    {
+        Salmost = false;
+    }
+    
+    if ((global.Player1Score = global.ScoreCap) || (global.Player2Score == global.ScoreCap))
+    {
+    finish = true;
+    
+        if global.Player1Score = global.ScoreCap
+        {
+            global.Winner = 1
+        }
+        
+        if global.Player2Score = global.ScoreCap
+        {
+            global.Winner = 2
+        }
+    }
+    
+    if (obj_scoreTimeKeeper.time &lt; 1)
+    {
+        if (global.Player1Score &gt; global.Player2Score)
+        {
+            global.Winner = 1
+            finish = true;
+            instance_create(x,y,obj_GameWonFade);
+            room_speed = 15
+        }
+        
+        else if (global.Player2Score &gt; global.Player1Score)
+        {
+            global.Winner = 2
+            finish = true;
+            instance_create(x,y,obj_GameWonFade);
+            room_speed = 15
+        }
+        else if (NewLimitReached == false)
+        {
+            instance_create(x, y, obj_SuddenDeath);
+            NewLimitReached = true;
+        }
+    }
+    
+    if (almost == true) 
+    {
+            if (pitch != 1.5)
+        {
+            pitch += 0.001
+        }
+        view_angle = choose(-1, 0, 1);
+    }  
+    
+    else if (Salmost == true) 
+    {
+            if (pitch != 2)
+        {
+            pitch += 0.001
+        }
+        view_angle = choose(-4, -2, -1, 0, 1, 2, 4);
+    }
+    else
+    {
+        if (pitch &gt; 1)
+        {
+             pitch -= 0.001;
+        }
+    }
+    
+    if (finish == true) 
+    {
+        pitch -= 0.06
+        view_angle = 0;
+    }   
+}         
 </string>
           </argument>
         </arguments>

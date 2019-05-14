@@ -25,15 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// making sure that the players can choose
+            <string>textScale = 0;
+textAngle = 0;
 
-global.KeyChoose = false;
-global.ContChoose = false;
-
-global.MonoChoose = false;
-global.MensChoose = false;
-
-choosed = false;
+angleSin = 0;
+scaleSin = 0;
 </string>
           </argument>
         </arguments>
@@ -62,7 +58,7 @@ choosed = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,11 +75,38 @@ choosed = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.KeyChoose == true &amp;&amp; global.ContChoose == true &amp;&amp; choosed = false
+            <string>key_B = gamepad_button_check_pressed(global.CurrentHost,gp_face2);
+
+if (global.CurrentHost == 0)
 {
-choosed = true;
-scr_trans();
+    if ((key_B) &amp;&amp; obj_charButtonController1.playerSelected == false) // Return to main menu
+    {       
+        audio_play_sound(snd_menuBack,1,0);
+        room_goto(rm_menuMain);
+    }
 }
+else if (global.CurrentHost == 1)
+{
+    if (key_B) &amp;&amp; (obj_charButtonController2.playerSelected == false) // Return to main menu
+    {        
+        audio_play_sound(snd_menuBack,1,0);
+        room_goto(rm_menuMain);
+    }
+}
+
+if (obj_charSelectContinue.active == false)
+{
+    angleSin += (0.15 / 2);
+    scaleSin += (0.25 / 2);
+}
+else
+{
+    angleSin += (0.15 / 4);
+    scaleSin += (0.25 / 4);
+}
+
+textAngle = sin (angleSin) * 4;
+textScale = sin (scaleSin) / 5 + 1;
 </string>
           </argument>
         </arguments>
@@ -110,12 +133,12 @@ scr_trans();
     draw_set_color(c_black);
     draw_set_halign(fa_center);
     draw_set_font(fnt_small);
-    draw_text(obj_TextLocation.x + 5, obj_TextLocation.y + 5, "choose your character");
+    draw_text_transformed(obj_TextLocation.x + 5, obj_TextLocation.y + 5, "choose your character", textScale, textScale, textAngle);
 
     draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_font(fnt_small);
-    draw_text(obj_TextLocation.x, obj_TextLocation.y, "choose your character");
+    draw_text_transformed(obj_TextLocation.x, obj_TextLocation.y, "choose your character", textScale, textScale, textAngle);
 
 }
 </string>

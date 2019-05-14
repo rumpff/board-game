@@ -27,30 +27,11 @@
             <kind>1</kind>
             <string>pauseSurf =  surface_create(view_wview, view_hview);
 pitch = 1;
-
-surface_set_target(pauseSurf);
-draw_clear_alpha(c_black,0);
-with(all)
-{
-    if (visible == true)
-    {
-        x = x-view_xview;
-        y = y-view_yview;
-        event_perform(ev_draw,0);
-        x = x+view_xview;
-        y = y+view_yview;
-    }
-}
-surface_reset_target();
-instance_deactivate_all(true);
-visible = true;
-
+holdTimer = 0.5
 
 audio_pause_sound(snd_wind);
 audio_pause_sound(snd_wind2);
 audio_pause_sound(snd_countdown);
-
-instance_create(0,0,obj_pausedded);
 </string>
           </argument>
         </arguments>
@@ -76,8 +57,6 @@ instance_create(0,0,obj_pausedded);
             <string>audio_sound_pitch(bgm_1,pitch);
 if (keyboard_check_pressed(vk_escape)) || (gamepad_button_check_pressed(0, gp_start))
 {
-    surface_free(pauseSurf);
-    instance_activate_all();
     audio_resume_sound(snd_wind);
     audio_resume_sound(snd_wind2);
     audio_resume_sound(snd_countdown);
@@ -89,64 +68,6 @@ if pitch &gt; 0.5
 {
     pitch -= 0.005;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//draw_set_color(c_white);
-//draw_set_halign(fa_center);
-//draw_set_valign(fa_center);
-//draw_set_font(fnt_large);
-//draw_text(global.ViewCenterX, global.ViewCenterY, "PAUSED")
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (surface_exists(pauseSurf))
-{
-    draw_surface(pauseSurf, view_xview, view_yview)
-}
-
-draw_set_color(c_black);
-draw_set_alpha(0.5);
-draw_rectangle(global.ViewCenterX - 1920,global.ViewCenterY - 1080,global.ViewCenterX + 1920,global.ViewCenterY + 1080,0);
-draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

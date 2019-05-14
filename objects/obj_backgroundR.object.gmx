@@ -25,19 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.BGcolour = choose(bgC_dkred, 
-                         bgC_dkblue, 
-                         bgC_dkgreen, 
-                         bgC_dkyellow, 
-                         bgC_dkcyan, 
-                         bgC_dkpurple,
-                         bgC_dkgreenish);
+            <string>/// Old random background [disabled]
+/*
+// Choose a background
+if (global.PrevRoom != rm_menu1) // make sure when dope zoom effect doesn't change then
+{
+    global.BGcolour = choose(bgC_dkred, 
+                             bgC_dkblue, 
+                             bgC_dkgreen, 
+                             bgC_dkyellow, 
+                             bgC_dkcyan, 
+                             bgC_dkpurple,
+                             bgC_dkgreenish);
+}
+
+// Set the background                         
+background_htiled = true;
+background_vtiled = true;
+background_visible = true;
+background_index[0] = global.BGcolour;
+*/
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,10 +65,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_index[0] = global.BGcolour;
-background_htiled = true;
-background_vtiled = true;
-background_visible = true;
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="72">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw the background
+
+// Circles
+var circleAmount = 16;
+var time = (get_timer() / 10000);
+var xpos = room_width / 2;
+var ypos = room_height / 2;
+
+for (i = circleAmount - 1; i &gt;= 0; i--)
+{
+    draw_set_circle_precision(4);
+    draw_set_color(make_colour_hsv(((time*3) + (i * 10)) / 5, 153, 255));
+    draw_circle(xpos, ypos, (i * 100 + (time % 100)), false);  
+    draw_set_circle_precision(24);
+}
 </string>
           </argument>
         </arguments>

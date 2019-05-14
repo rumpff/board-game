@@ -34,6 +34,11 @@ angle = 0;
 SinNumber = 0;
 SinNumber2 = 0;
 
+skip = false;
+
+pitch = 1;
+
+// Choose a random text for the winner
 text = choose("You win!!",
 "You're the champ!",
 "Congrats!",
@@ -45,15 +50,10 @@ text = choose("You win!!",
 "You didn't fail",
 "Congratulations"," 
 You didn't suck!",
-"You deserve a cake")
-
-
-// if more than the limit
-/*
-text = choose(text1,text2);
-text1 = choose();
-text2 = choose();
-*/
+"You deserve a cake",
+"Woohoo!",
+"YAY!",
+"Nice Nice!")
 </string>
           </argument>
         </arguments>
@@ -76,21 +76,34 @@ text2 = choose();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key_A = gamepad_button_check_pressed(0,gp_face1) || keyboard_check_pressed(vk_space);
+            <string>key_A = gamepad_button_check_pressed(0,gp_face1) || keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(1,gp_face1);
 
 if global.CrownOnHead = true
 {
-SinNumber += 0.1;
-SinNumber2 += 0.03;
+    SinNumber += 0.1;
+    SinNumber2 += 0.03;
 
-angle= sin (SinNumber) * 6;
-scale = sin (SinNumber2) + 1;
+    angle= sin (SinNumber) * 6;
+    scale = sin (SinNumber2) + 1;
 
-if !audio_is_playing(bgm_winner)
+    if (!audio_is_playing(bgm_winner) || (key_A))
+    {
+        instance_create(0,0,obj_wowTrans);
+    }
+    
+    if (key_A)
+    {
+        skip = true;
+    }
+}
+
+
+if (skip)
 {
-    instance_create(0,0,obj_wowTrans);
+    pitch -= 0.03;
 }
-}
+
+audio_sound_pitch(bgm_winner, pitch);
 </string>
           </argument>
         </arguments>

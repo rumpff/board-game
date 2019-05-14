@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = image_speed * 2;
+image_angle = random_range(0,359);
 
 Csound = choose(snd_Crash_01, snd_Crash_02, snd_Crash_04, snd_Crash_05, snd_Crash_06, snd_Crash_07);
 audio_play_sound(Csound,1,0);
@@ -33,8 +34,7 @@ audio_play_sound(Csound,1,0);
 image_xscale = 6;
 image_yscale = 6;
 
-image_blend = choose(c_aqua, c_black, c_blue, c_fuchsia, c_green, c_lime,  c_maroon, 
-                     c_navy, c_olive, c_orange, c_purple, c_red, c_teal, c_yellow);
+image_blend = make_colour_hsv(random(255), 255, 255);
 
 global.PlayerDeath = noone
 </string>

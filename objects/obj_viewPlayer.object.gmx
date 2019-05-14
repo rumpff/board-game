@@ -3,7 +3,7 @@
   <spriteName>spr_Player</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -97,13 +97,13 @@ physics_fixture_delete(Fixture);
         //break;
         if instance_exists(obj_player)
         {
-        phy_position_x = obj_player.x;
-        phy_position_y = obj_player.y;
+            phy_position_x = obj_player.x;
+            phy_position_y = obj_player.y;
         }
-        else if !instance_exists(obj_player)
+        else if (!instance_exists(obj_player) &amp;&amp; instance_exists(obj_player2))
         {
-        phy_position_x = obj_player2.x;
-        phy_position_y = obj_player2.y;
+            phy_position_x = obj_player2.x;
+            phy_position_y = obj_player2.y;
         }
         exit
     }
@@ -121,13 +121,13 @@ physics_fixture_delete(Fixture);
         
         if instance_exists(obj_player2)
         {
-        phy_position_x = obj_player2.x;
-        phy_position_y = obj_player2.y;
+            phy_position_x = obj_player2.x;
+            phy_position_y = obj_player2.y;
         }
-        else if !instance_exists(obj_player2)
+        else if (!instance_exists(obj_player2) &amp;&amp; instance_exists(obj_player))
         {
-        phy_position_x = obj_player.x;
-        phy_position_y = obj_player.y;
+            phy_position_x = obj_player.x;
+            phy_position_y = obj_player.y;
         }
         exit
     }
@@ -159,7 +159,7 @@ physics_fixture_delete(Fixture);
             <kind>1</kind>
             <string>if (global.debug == true)
 {
-draw_self();
+    draw_self();
 }
 </string>
           </argument>

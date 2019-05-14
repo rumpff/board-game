@@ -34,8 +34,11 @@ alarm[0] = 150;
 alarm[1] = 180;
 
 
-x = random(room_width); //randomly selects x position in room
-y = random(room_height); //randomly selects y position in room
+//x = random(room_width); //randomly selects x position in room
+//y = random(room_height); //randomly selects y position in room
+
+x = (room_width / 2);
+y = (room_height/ 2);
 </string>
           </argument>
         </arguments>

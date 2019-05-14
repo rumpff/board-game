@@ -44,6 +44,11 @@ dash = 0;
 VDashSpeed = 75;
 DashGround = 0;
 
+DrawTrail = false;
+
+ii = 0; // the floor of the current image number
+iiPrev = -1;
+
 x = obj_player1Spawn.x;
 y = obj_player1Spawn.y;
 
@@ -54,34 +59,149 @@ vsp = -jumpspeed;
 
 // choosing the character
 // if the player choose: Monopoly
-if (global.Player1Profile = 1)
+if (global.Player1Profile = monopoly)
 {
-sprite_idle =   spr_monopoly_idle;
-sprite_run =    spr_monopoly_run;
-sprite_jump =   spr_monopoly_jump;
-sprite_fall =   spr_monopoly_fall;
-sprite_dash =   spr_monopoly_dash;
+    sprite_idle =   spr_monopoly_idle;
+    sprite_run =    spr_monopoly_run;
+    sprite_jump =   spr_monopoly_jump;
+    sprite_fall =   spr_monopoly_fall;
+    sprite_dash =   spr_monopoly_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 8;
 }
 // if the player choose: Mens Erger Je Niet
-if (global.Player1Profile = 2)
+else if (global.Player1Profile = mens)
 {
-sprite_idle =   spr_mens_idle;
-sprite_run =    spr_mens_run;
-sprite_jump =   spr_mens_jump;
-sprite_fall =   spr_mens_fall;
-sprite_dash =   spr_mens_dash;
+    sprite_idle =   spr_mens_idle;
+    sprite_run =    spr_mens_run;
+    sprite_jump =   spr_mens_jump;
+    sprite_fall =   spr_mens_fall;
+    sprite_dash =   spr_mens_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 8;
 }
-// if the debug mode is on
-if (global.Player1Profile = 0)
+
+// if the player choose: Love
+else if (global.Player1Profile = love)
 {
-sprite_idle =   spr_player_idle;
-sprite_run =    spr_player_run;
-sprite_jump =   spr_player_jump;
-sprite_fall =   spr_player_fall;
-sprite_dash =   spr_player_dash;
+    sprite_idle =   spr_love_idle;
+    sprite_run =    spr_love_run;
+    sprite_jump =   spr_love_jump;
+    sprite_fall =   spr_love_fall;
+    sprite_dash =   spr_love_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = -1;
+    stepFrame2 = 1;
+}
+// if the player choose: Veridian
+else if (global.Player1Profile = veridian)
+{
+    sprite_idle =   spr_veridian_idle;
+    sprite_run =    spr_veridian_run;
+    sprite_jump =   spr_veridian_jump;
+    sprite_fall =   spr_veridian_fall;
+    sprite_dash =   spr_veridian_dash;
+    
+    sound_jump1 = snd_jump1_veridian;
+    sound_jump2 = snd_jump2_veridian;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 2;
+}
+// if the player choose: Violet
+else if (global.Player1Profile = violet)
+{
+    sprite_idle =   spr_violet_idle;
+    sprite_run =    spr_violet_run;
+    sprite_jump =   spr_violet_jump;
+    sprite_fall =   spr_violet_fall;
+    sprite_dash =   spr_violet_dash;
+    
+    sound_jump1 = snd_jump1_veridian;
+    sound_jump2 = snd_jump2_veridian;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 2;
+}
+// if the player choose: Surfboard
+else if (global.Player1Profile = surfboard)
+{
+    sprite_idle =   spr_surf_idle;
+    sprite_run =    spr_surf_run;
+    sprite_jump =   spr_surf_jump;
+    sprite_fall =   spr_surf_fall;
+    sprite_dash =   spr_surf_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1.8;
+    
+    stepFrame1 = 6;
+    stepFrame2 = 21;
+}
+// if the player choose: Skateboard
+else if (global.Player1Profile = skateboard)
+{
+    sprite_idle =   spr_skate_idle;
+    sprite_run =    spr_skate_run;
+    sprite_jump =   spr_skate_jump;
+    sprite_fall =   spr_skate_fall;
+    sprite_dash =   spr_skate_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1.8;
+    
+    stepFrame1 = 0;
+    stepFrame2 = 0;
+    
+    stepFrame1 = 10;
+    stepFrame2 = 21;
+}
+// if the player somehow chose nothing
+else
+{
+    sprite_idle =   spr_player_idle;
+    sprite_run =    spr_player_run;
+    sprite_jump =   spr_player_jump;
+    sprite_fall =   spr_player_fall;
+    sprite_dash =   spr_player_dash;
+    
+    sound_jump1 = snd_jump1;
+    sound_jump2 = snd_jump2;
+    
+    imageSpeed = 1;
+    
+    stepFrame1 = -1;
+    stepFrame2 = -1;
 }
 
 instance_create(x,y,obj_shockwave);
+
+gamepad_set_axis_deadzone(0,0.3);
 
 global.ShockDeath = 2;
 </string>
@@ -109,6 +229,8 @@ global.ShockDeath = 2;
             <string>DashGround = 0
 view_yview -= 5
 sprite_index = sprite_idle;
+DrawTrail = false;
+image_speed = 1;
 </string>
           </argument>
         </arguments>
@@ -137,6 +259,13 @@ sprite_index = sprite_dash;
 audio_stop_sound(snd_wind);
 audio_play_sound(snd_inpact,1,0);
 view_yview += 5;
+image_speed = 0;
+
+instance_create(x,y,obj_RumbleShort);
+with(obj_RumbleShort) gpID = 1;
+with(obj_RumbleShort) amount = 0.6;
+
+with(obj_screenshake) yY += 50;
 </string>
           </argument>
         </arguments>
@@ -160,11 +289,12 @@ view_yview += 5;
           <argument>
             <kind>1</kind>
             <string>//Get the player's input
-key_right = keyboard_check(vk_right);
-key_left = -keyboard_check(vk_left);
-key_jump = keyboard_check_pressed(vk_space);
-key_jump_held = keyboard_check(vk_space);
-key_down = keyboard_check(vk_down);
+key_right = (keyboard_check(vk_right) || gamepad_axis_value(1,gp_axislh) &gt; 0) || (gamepad_button_check(1, gp_padr));
+key_left = -(keyboard_check(vk_left) || gamepad_axis_value(1,gp_axislh) &lt; 0 || (gamepad_button_check(1, gp_padl)));
+key_jump = (keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(1,gp_face1));
+key_jump_held = (keyboard_check(vk_space) || gamepad_button_check(1,gp_face1));
+key_down = (keyboard_check(vk_down) || gamepad_button_check(1,gp_face3) || gamepad_button_check(1,gp_face2));
+
 if (DashGround == 0)
 {
 //React to inputs
@@ -188,12 +318,12 @@ if (key_jump) &amp;&amp; (jumps &gt; 0) &amp;&amp; (!key_down)
 {
     if (jumps == 2)
     {
-        audio_play_sound(snd_jump1,1,0)
+        audio_play_sound(sound_jump1,1,0)
     }
     if (jumps == 1)
     {
         instance_create(obj_player.x+0,obj_player.y+32,obj_doubleJumpFX)
-        audio_play_sound(snd_jump2,1,0)
+        audio_play_sound(sound_jump2,1,0)
     }
     jumps -= 1;
     vsp = -jumpspeed;
@@ -210,6 +340,7 @@ if (key_down)
     vsp = VDashSpeed
     dash = 1;
     jumps = 0;
+    DrawTrail = true;
 }
 
 var hsp_final = hsp + hsp_carry;
@@ -267,6 +398,11 @@ if (place_meeting(x,y+vsp,obj_player2))
     }
 
 }
+// Collison with kill plain
+if (place_meeting(x, y, obj_killPlain))
+{
+    scr_player2dedKP();
+}
 
 
 //Animate
@@ -276,19 +412,31 @@ if (place_meeting(x,y+1,obj_wall))
     if (move!=0) 
     {
         sprite_index = sprite_run; 
-        image_speed = 1;
+        image_speed = imageSpeed;
     }
-    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = 0.5;
+    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = imageSpeed / 2;
 }
 else
 {
     if (vsp &lt; 0) sprite_index = sprite_jump; else if (dash = 1) sprite_index = sprite_dash; else sprite_index = sprite_fall;
 }
-}
-
-if (DashGround == 1)
+// Control the footstep sounds
+if (sprite_index = sprite_run)
 {
-    view_yview = choose(0,1,2,3)
+    ii = floor(image_index);
+    if (ii != iiPrev)
+    {
+        if (ii == stepFrame1)
+        {
+            audio_play_sound(snd_footstep1, 1, 0);
+        }
+        else if (ii == stepFrame2)
+        {
+            audio_play_sound(snd_footstep2, 1, 0);
+        }
+    }
+    iiPrev = ii;
+}
 }
 
 if (vsp == VDashSpeed)
@@ -348,7 +496,16 @@ scr_playerded();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>/*
+if (DrawTrail = true) {
+    draw_trail(5,96,c_white,-1,0,1);
+}
+else { 
+    trail_destroy(); 
+}
+*/
+
+draw_self();
 </string>
           </argument>
         </arguments>

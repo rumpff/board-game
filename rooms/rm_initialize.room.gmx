@@ -10,84 +10,86 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>randomize();
+  <code>randomize(); // Make sure that every random value truly is random
 
-global.checkpoint = noone;
-global.checkpointR = 0;
-global.checkpointx = 0;
-global.checkpointy = 0;
+global.countdown = 0; // The countdown for when a player died
 
-global.countdown = 0;
+global.PlayerDeath = noone; // Which player was killed by the other player
+global.ShockDeath = noone; // Which player was killed by spawn protection
 
-global.PlayerDeath = noone;
-global.ShockDeath = noone;
+// The profiles: 1 = Monopoly, 2 = Mens, 0 = ShaunJS
+global.Player1Profile = 0; // The character that player 1 chose
+global.Player2Profile = 0; // The character that player 2 chose
 
-global.Player1Profile = 0;
-global.Player2Profile = 0;
+global.Player1Score = 0; // Player one's score
+global.Player1ScoreNew = false; // If player one just scored a point
 
-global.Player1Score = 0;
-global.Player1ScoreNew = false;
+global.Player2Score = 0; // Player two's score
+global.Player2ScoreNew = false; // If player two just scored
 
-global.Player2Score = 0;
-global.Player2ScoreNew = false;
+global.ScoreCap = 11; // The score needed to win the game
+global.TimeCap = 361; // The Time-Limit, in seconds
+global.Winner = noone; // Which player won the game
 
-global.ScoreCap = 11;
-global.Winner = noone;
+global.Player1Points = 0; // The games player one won
+global.Player2Points = 0; // The games player two won
 
-global.Player1Points = 0;
-global.Player2Points = 0;
+global.MensChoose = false; // If the character "Mens erg je niet" has been choosen
+global.MonoChoose = false; // if the character "Monopoly" has been choosen
 
-global.MensChoose = false;
-global.MonoChoose = false;
+global.KeyChoose = false; // If player 2 has choosen a character
+global.ContChoose = false; // If player 1 has choosen a character
 
-global.KeyChoose = false;
-global.ContChoose = false;
+global.CurrentHost = noone // Which player currently controlls the menu's
 
-global.GameStart = false;
-global.CrownOnHead = false;
+global.GameStart = false; // If the game is started
+global.CrownOnHead = false; // If the crown is on the players head
 
-global.ViewCenterX = 0;
-global.ViewCenterY = 0;
+global.CenterViewX = 0; // the center of the view
+global.CenterViewY = 0; // the center of the view
 
-global.CursorX = (room_width / 2);
-global.CursorY = (room_height / 2);
+global.BGM = true; // If the BGM is on or off
+global.BGMIndex = noone; // The current BGM
+global.BGpitch = 1; // The pitch of the bgm
+global.BGcolour = noone; // The background colour
 
-global.BGM = 1;
-global.BGpitch = 1;
-global.BGcolour = noone;
+global.GameNew = true; // If a new game is started
+global.ActiveArena = noone; // For returning to the game from the pause menu
+global.NewLevel = true; // If a new level is started
+global.AbortGame = false; // If the game needs to be aborted (after exiting pause menu)
 
-global.GameNew = true;
-//sound_volume(bgm_mainMenu, 0.8);
-audio_sound_gain(bgm_mainMenu,0.3,0);
-// de profielen: 1 = Monopoly, 2 = Mens, 0 = ShaunJS
+global.SinNumber = 0; // For the main menu "wiggle"
 
-global.SinNumber = 0;
+global.PrevRoom = noone; // The previous room
 
-global.doge = false;
+global.doge = false; // If the doge easter is triggerd
 
-global.debug = false;
+global.debug = false; // If debug mode is on
+
+instance_create(0, 0, obj_debugTools);
+
 room_goto_next();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
-    <isSet>0</isSet>
-    <w>0</w>
-    <h>0</h>
-    <showGrid>0</showGrid>
-    <showObjects>0</showObjects>
-    <showTiles>0</showTiles>
-    <showBackgrounds>0</showBackgrounds>
-    <showForegrounds>0</showForegrounds>
+    <isSet>-1</isSet>
+    <w>1020</w>
+    <h>602</h>
+    <showGrid>-1</showGrid>
+    <showObjects>-1</showObjects>
+    <showTiles>-1</showTiles>
+    <showBackgrounds>-1</showBackgrounds>
+    <showForegrounds>-1</showForegrounds>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
-    <deleteUnderlyingTiles>0</deleteUnderlyingTiles>
-    <page>0</page>
+    <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
+    <page>1</page>
     <xoffset>0</xoffset>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="10" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -106,7 +108,9 @@ room_goto_next();</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances/>
+  <instances>
+    <instance objName="obj_previousRoomSetter" x="224" y="160" name="inst_E1A3569A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+  </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

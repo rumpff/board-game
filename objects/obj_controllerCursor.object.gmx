@@ -27,9 +27,18 @@
             <kind>1</kind>
             <string>Multiplier = 270;
 
-gamepad_set_axis_deadzone(0,0.3);
+CId = global.CurrentHost; // The current Controller Id
+
+gamepad_set_axis_deadzone(CId,0.3);
 
 Csize = 100;
+
+// pre set the cursor
+CursorX = gamepad_axis_value(CId, gp_axislh) * 1.77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777;
+CursorY = gamepad_axis_value(CId, gp_axislv);
+
+x = 960 + (CursorX * Multiplier);
+y = 540 + (CursorY * Multiplier);
 </string>
           </argument>
         </arguments>
@@ -52,22 +61,22 @@ Csize = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key_A = gamepad_button_check_pressed(0,gp_face1);
+            <string>key_A = gamepad_button_check_pressed(CId, gp_face1);
 // Putting the position of the Lstick in 2 variables
-CursorX = gamepad_axis_value(0,gp_axislh) * 1.77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777;
-CursorY = gamepad_axis_value(0,gp_axislv);
+CursorX = gamepad_axis_value(CId, gp_axislh) * 1.77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777;
+CursorY = gamepad_axis_value(CId, gp_axislv);
 
 // Putting the object on the right position
-x = 960 + (CursorX * Multiplier);
-y = 540 + (CursorY * Multiplier);
+x = lerp(x, 960 + (CursorX * Multiplier), 0.6);
+y = lerp(y, 540 + (CursorY * Multiplier), 0.6);
 
-gamepad_button_check(0,gp_face1)
+gamepad_button_check(CId, gp_face1)
 {
-Csize = 5;
+    Csize = 5;
 }
-gamepad_button_check_released(0,gp_face1)
+gamepad_button_check_released(CId, gp_face1)
 {
-Csize = 15;
+    Csize = 15;
 }
 </string>
           </argument>
@@ -92,6 +101,9 @@ Csize = 15;
           <argument>
             <kind>1</kind>
             <string>// draw_self();
+
+draw_set_circle_precision(4);
+
 draw_set_color(c_black);
 
 draw_line_width(x, y, 960, 540, 4);
@@ -100,6 +112,8 @@ draw_circle(x, y, 4, false);
 draw_ellipse(957, 537, 963, 543, false);
 
 draw_circle_colour(x, y, Csize, c_black, c_white, true);
+
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

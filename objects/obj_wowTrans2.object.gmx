@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>radius = 2000; 
+            <string>instance_destroy();
+radius = 2000; 
 </string>
           </argument>
         </arguments>

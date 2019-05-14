@@ -28,14 +28,24 @@
             <string>zoom = 0;
 SiNumber = 0;
 SiNumber2 = 0;
+SiNumber3 = 0;
 angle = 0;
 scale = 1;
 xscal = 1;
 yscal = 1;
+scaleSin = 0;
+scaleSin2 = 0;
 angleSin = 0
-offset = 10;
+offset = 2;
 markiplier = 0;
 pressed = false;
+zoomScale = 1;
+textScale = 0;
+textScale2 = 0;
+startAlpha = 1;
+startScale = 1;
+
+tPosNameY = 0;
 </string>
           </argument>
         </arguments>
@@ -58,28 +68,39 @@ pressed = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>button_a = gamepad_button_check_pressed(0,gp_start);
+            <string>button_a1 = gamepad_button_check_pressed(0,gp_start);
+button_a2 = gamepad_button_check_pressed(1,gp_start);
 SiNumber += 0.5;
 SiNumber2 += 0.2;
+SiNumber3 += 0.05;
 angleSin += 0.05;
 markiplier += 0.001;
+scaleSin += (0.25 / 2);
+scaleSin2 -= (0.25 / 2);
 
-if button_a &amp;&amp; pressed == false
+if (button_a1 || button_a2 &amp;&amp; pressed == false)
 {
+    if (button_a1)
+    {
+        global.CurrentHost = 0;
+    }
+    else if (button_a2)
+    {
+        global.CurrentHost = 1;
+    }
     zoom = 1;
     audio_play_sound(snd_menuOpening,1,0);
-    instance_create(x,y,obj_fadeForRotate);
+    //instance_create(x,y,obj_fadeForRotate);
     pressed = true;
     global.CursorX = (room_width / 2);
     global.CursorY = (room_height / 2);
+    with(obj_zoomInEffect) active = true;
 }
-
-if (zoom == 1)
+if (pressed)
 {
-    view_wview += 2;
-    view_hview += 2;
+    startAlpha -= 0.02;
+    startScale += 0.01;
 }
-
 
 //xscal = choose(0.98,0.99,1,1.01,1.02);
 //yscal = choose(0.98,0.99,1,1.01,1.02);
@@ -96,6 +117,9 @@ if (zoom == 1)
 //view_yview = sin (SiNumber2) * 21;
 
 angle = sin (angleSin) * 3;
+textScale = sin (scaleSin) / 7 + 1;
+textScale2 = sin (scaleSin2) / 7 + 1;
+tPosNameY = sin (SiNumber3) * 6;
 //xscal = sin (angleSin) * 2;
 //yscal = sin (angleSin) * -2;
 </string>
@@ -129,20 +153,26 @@ draw_text_transformed(920,540,"Board",1,1,angle);
 draw_set_halign(fa_left);
 draw_text_transformed(920,540," Game",1,1, - angle);
 
-draw_set_font(fnt_small);
-draw_set_halign(fa_center);
-draw_text_transformed(920,810,"press START on the controller to begin", xscal, yscal, 0);
-
+draw_set_valign(fa_center);
 draw_set_font(fnt_small);
 draw_set_color(c_black);
 draw_set_halign(fa_center);
-draw_text_transformed(920 + offset,810 + offset,"press START on the controller to begin", xscal, yscal, 0);
+draw_text_transformed(920, 920 + offset,"press START", textScale, textScale, 0);
 
 draw_set_font(fnt_small);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
-draw_text_transformed(920,810,"press START on the controller to begin", xscal, yscal, 0);
+draw_text_transformed(920, 920, "press START", textScale, textScale, 0);
 
+if (pressed)
+{   
+    draw_set_alpha(startAlpha);
+    draw_set_font(fnt_small);
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_text_transformed(920,920,"press START", startScale, startScale, 0);
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>
