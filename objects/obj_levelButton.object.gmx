@@ -79,7 +79,7 @@ switch (charID)
     break;
     
     case 4: 
-    type = "Scabble";
+    type = "Scrabble";
     arena = rm_arena_scrabble;
     break;
     

@@ -32,6 +32,7 @@ hsp_carry = 0;
 vsp = 0;
 movespeed = 16;
 jumps = 1;
+angle = 0;
 
 jumpsmax = 2;
 
@@ -405,10 +406,16 @@ if (place_meeting(x,y+1,obj_wall))
         image_speed = imageSpeed;
     }
     else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = imageSpeed / 2;
+    angle = 0;
 }
 else
 {
     if (vsp &lt; 0) sprite_index = sprite_jump; else if (dash = 1) sprite_index = sprite_dash; else sprite_index = sprite_fall;
+    
+    var angleDest = 30;
+    if(jumps == 0) angleDest += 20;
+     
+    angle = lerp(angle, -move * angleDest, 0.2);
 }
 // Control the footstep sounds
 if (sprite_index = sprite_run)
@@ -516,7 +523,7 @@ global.Player2Score = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, angle, image_blend, image_alpha); 
 </string>
           </argument>
         </arguments>

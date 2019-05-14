@@ -565,6 +565,7 @@
     <object>objects\obj_IntroKnal</object>
     <object>objects\obj_tutorialController</object>
     <object>objects\obj_centerview</object>
+    <object>objects\obj_spawnPoint</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\timeline0</timeline>
