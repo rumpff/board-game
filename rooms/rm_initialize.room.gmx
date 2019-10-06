@@ -17,7 +17,6 @@ global.countdown = 0; // The countdown for when a player died
 global.PlayerDeath = noone; // Which player was killed by the other player
 global.ShockDeath = noone; // Which player was killed by spawn protection
 
-// The profiles: 1 = Monopoly, 2 = Mens, 0 = ShaunJS
 global.Player1Profile = 0; // The character that player 1 chose
 global.Player2Profile = 0; // The character that player 2 chose
 
@@ -26,6 +25,18 @@ global.Player1ScoreNew = false; // If player one just scored a point
 
 global.Player2Score = 0; // Player two's score
 global.Player2ScoreNew = false; // If player two just scored
+
+global.PlayerObject[0] = 0;
+global.PlayerObject[1] = 0;
+
+global.PlayerProfiles[0] = 0;
+global.PlayerProfiles[1] = 0;
+
+global.PlayerScore[0] = 0;
+global.PlayerScore[1] = 0;
+
+global.PlayerScoreNew[0] = false;
+global.PlayerScoreNew[1] = false;
 
 global.ScoreCap = 11; // The score needed to win the game
 global.TimeCap = 361; // The Time-Limit, in seconds
@@ -63,10 +74,6 @@ global.SinNumber = 0; // For the main menu "wiggle"
 global.PrevRoom = noone; // The previous room
 
 global.doge = false; // If the doge easter is triggerd
-
-global.debug = false; // If debug mode is on
-
-instance_create(0, 0, obj_debugTools);
 
 room_goto_next();</code>
   <enableViews>0</enableViews>

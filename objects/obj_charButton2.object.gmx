@@ -117,7 +117,7 @@ switch (charID)
           <argument>
             <kind>1</kind>
             <string>/// Check if the other player choose the same character
-if (charID == global.Player2Profile)
+if (charID == global.PlayerProfile[1])
 {
     image_index = 1;
     choosen = true;

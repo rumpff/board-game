@@ -326,8 +326,8 @@
     <instance objName="obj_middle" x="448" y="352" name="inst_5F9F5ADE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player2Spawn" x="832" y="448" name="inst_BF109B5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player1Spawn" x="3008" y="448" name="inst_2015F0BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gameController" x="512" y="256" name="inst_95A6088E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_scoreTimeKeeper" x="480" y="256" name="inst_1B62D37B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gameController" x="544" y="224" name="inst_95A6088E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_scoreTimeKeeper" x="448" y="224" name="inst_1B62D37B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pauseGame" x="416" y="320" name="inst_B202C52B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_levelResetter" x="544" y="352" name="inst_951F3E4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wowTrans2" x="576" y="320" name="inst_BF59A110" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -396,6 +396,8 @@
       <script>scripts\trail_destroy.gml</script>
     </scripts>
     <script>scripts\scr_gameReset.gml</script>
+    <script>scripts\CreatePlayer.gml</script>
+    <script>scripts\KillPlayer.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_small</font>

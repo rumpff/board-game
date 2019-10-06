@@ -393,7 +393,7 @@ button4Char = 4;
 button5Char = 5;
 button6Char = 6;
 
-if (global.Player2Profile = veridian)
+if (PlayerProfile[1] = veridian)
 {
     button4Char = violet;    
 }
@@ -458,7 +458,7 @@ if (!playerSelected)
     {
         if (obj_charSelect2.objID.image_index = 0)
         {
-            global.Player1Profile = obj_charSelect2.currentSelected;
+            global.PlayerProfile[0] = obj_charSelect2.currentSelected;
             playerSelected = true;
             instance_create(x, y, obj_charDrawerEffect2);
             audio_play_sound(snd_select, 1, 0);
@@ -502,9 +502,9 @@ if (playerSelected &amp;&amp; obj_charSelectContinue.GoingToNext == false)
             playerSelected = false;
             audio_play_sound(snd_deSelect, 1, 0);
             
-            if (global.Player2Profile = violet)
+            if (global.PlayerProfile[1] = violet)
             {
-                global.Player2Profile = 0;
+                global.PlayerProfile[1] = 0;
                 obj_charButtonController1.playerSelected = false;
             }
         }

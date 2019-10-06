@@ -8,7 +8,507 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>DashGround = 0
+view_yview -= 5
+sprite_index = sprite_idle;
+DrawTrail = false;
+image_speed = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>DashGround = 1;
+alarm[1] = 15;
+sprite_index = sprite_dash;
+audio_stop_sound(snd_wind);
+audio_play_sound(snd_inpact,1,0);
+view_yview += 5;
+image_speed = 0;
+
+var rumb = instance_create(x,y,obj_RumbleShort);
+with(rumb) gpID = 1;
+with(rumb) amount = 0.6;
+
+with(obj_screenshake) yY += 50;
+
+        
+spriteScaleX = 1.8;
+spriteScaleY = 0.2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Get Input
+
+key_right = (keyboard_check(vk_right) || gamepad_axis_value(1,gp_axislh) &gt; 0) || (gamepad_button_check(m_PlayerId, gp_padr));
+key_left = -(keyboard_check(vk_left) || gamepad_axis_value(1,gp_axislh) &lt; 0 || (gamepad_button_check(m_PlayerId, gp_padl)));
+key_jump = (keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(m_PlayerId, gp_face1));
+key_jump_held = (keyboard_check(vk_space) || gamepad_button_check(m_PlayerId, gp_face1));
+key_down = (keyboard_check(vk_down) || gamepad_button_check(m_PlayerId, gp_face3) || gamepad_button_check(m_PlayerId, gp_face2));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>DashGround</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move horizontal
+move = key_left + key_right;
+hsp = move * movespeed;
+if  (dash == 0)
+{
+    if (vsp &lt; 30) vsp += grav;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Jump control
+
+if (place_meeting(x,y+1,obj_wall))
+{
+    jumps = jumpsmax;
+}
+else
+{
+    if (jumps == jumpsmax) jumps -=1;
+}
+
+if (key_jump) &amp;&amp; (jumps &gt; 0) &amp;&amp; (!key_down)
+{
+    if (jumps == 2)
+    {
+        audio_play_sound(sound_jump1,1,0);
+        
+        spriteScaleX = 0.75;
+        spriteScaleY = 1.25;
+    }
+    if (jumps == 1)
+    {
+        instance_create(obj_player.x+0,obj_player.y+32,obj_doubleJumpFX)
+        audio_play_sound(sound_jump2,1,0)
+    }
+    jumps -= 1;
+    vsp = -jumpspeed;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Dash control
+
+if (vsp &lt; 0) &amp;&amp; (!key_jump_held) vsp = max(vsp,-jumpspeed/2)
+
+if (key_down)
+{
+    if !audio_is_playing(snd_wind)
+    {
+        audio_play_sound(snd_wind,1,0);
+    }
+    vsp = VDashSpeed
+    dash = 1;
+    jumps = 0;
+    DrawTrail = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Finalize Horizontal move
+hsp_final = hsp + hsp_carry;
+hsp_carry = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collision
+
+//Horizontal Collision
+if (place_meeting(x+hsp_final,y,obj_wall))
+{
+    while(!place_meeting(x+sign(hsp_final),y,obj_wall))
+    {
+        x += sign(hsp_final);
+    }
+    hsp_final = 0;
+    hsp = 0;
+}
+x += hsp_final;
+
+//Vertical Collision
+if (place_meeting(x,y+vsp,obj_wall))
+
+{
+    
+    while(!place_meeting(x,y+sign(vsp),obj_wall))
+    {
+        y += sign(vsp);
+        if (dash = 1)
+        {
+            alarm[0] = 1
+        }
+    }
+    audio_stop_sound(snd_wind);
+    vsp = 0;
+    dash = 0;
+}
+y += vsp;
+
+// other player collision vertical
+if (place_meeting(x,y+vsp,obj_player))
+{
+    if vsp &gt; 0
+    if (dash == 1)
+    {
+        KillPlayer(abs(1 - m_PlayerId))
+    }
+}
+// Collison with kill plain
+if (place_meeting(x, y, obj_killPlain))
+{
+    scr_player2dedKP();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Animate
+if (move!=0) image_xscale = move;
+if (place_meeting(x,y+1,obj_wall))
+{
+    if (move!=0) 
+    {
+        sprite_index = sprite_run; 
+        image_speed = imageSpeed;
+    }
+    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = imageSpeed / 2;
+    angle = 0;
+}
+else
+{
+    if (vsp &lt; 0) sprite_index = sprite_jump; else if (dash = 1) sprite_index = sprite_dash; else sprite_index = sprite_fall;
+    
+    var angleDest = 30;
+    if(jumps == 0) angleDest += 20;
+     
+    angle = lerp(angle, -move * angleDest, 0.2);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Footstep sounds
+if (sprite_index = sprite_run)
+{
+    ii = floor(image_index);
+    if (ii != iiPrev)
+    {
+        if (ii == stepFrame1)
+        {
+            audio_play_sound(snd_footstep1, 1, 0);
+        }
+        else if (ii == stepFrame2)
+        {
+            audio_play_sound(snd_footstep2, 1, 0);
+        }
+    }
+    iiPrev = ii;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Play wind sound
+if (vsp == VDashSpeed)
+{
+    if !audio_is_playing(snd_wind)
+    {
+    audio_play_sound(snd_wind,1,0);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update Squish
+spriteScaleX = lerp(spriteScaleX, 1, 0.3);
+spriteScaleY = lerp(spriteScaleY, 1, 0.3);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>After init</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -26,6 +526,11 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
+
+/* Init Variables 
+ * m_PlayerId
+*/
+
 grav = 0.8;
 hsp = 0;
 hsp_carry = 0;
@@ -58,6 +563,36 @@ key_down = 0;
 
 vsp = -jumpspeed;
 
+
+spriteScaleX = 1;
+spriteScaleY = 1;
+
+instance_create(x,y,obj_shockwave);
+
+gamepad_set_axis_deadzone(0,0.3);
+
+global.ShockDeath = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Assign sprites
 // choosing the character
 // if the player choose: Monopoly
 if (global.Player1Profile = monopoly)
@@ -199,288 +734,6 @@ else
     stepFrame1 = -1;
     stepFrame2 = -1;
 }
-
-instance_create(x,y,obj_shockwave);
-
-gamepad_set_axis_deadzone(0,0.3);
-
-global.ShockDeath = 2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>DashGround = 0
-view_yview -= 5
-sprite_index = sprite_idle;
-DrawTrail = false;
-image_speed = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>DashGround = 1;
-alarm[1] = 15;
-sprite_index = sprite_dash;
-audio_stop_sound(snd_wind);
-audio_play_sound(snd_inpact,1,0);
-view_yview += 5;
-image_speed = 0;
-
-instance_create(x,y,obj_RumbleShort);
-with(obj_RumbleShort) gpID = 1;
-with(obj_RumbleShort) amount = 0.6;
-
-with(obj_screenshake) yY += 50;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Get the player's input
-key_right = (keyboard_check(vk_right) || gamepad_axis_value(1,gp_axislh) &gt; 0) || (gamepad_button_check(1, gp_padr));
-key_left = -(keyboard_check(vk_left) || gamepad_axis_value(1,gp_axislh) &lt; 0 || (gamepad_button_check(1, gp_padl)));
-key_jump = (keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(1,gp_face1));
-key_jump_held = (keyboard_check(vk_space) || gamepad_button_check(1,gp_face1));
-key_down = (keyboard_check(vk_down) || gamepad_button_check(1,gp_face3) || gamepad_button_check(1,gp_face2));
-
-if (DashGround == 0)
-{
-//React to inputs
-move = key_left + key_right;
-hsp = move * movespeed;
-if  (dash == 0)
-{
-    if (vsp &lt; 30) vsp += grav;
-}
-//Jumps
-if (place_meeting(x,y+1,obj_wall))
-{
-    jumps = jumpsmax;
-}
-else
-{
-    if (jumps == jumpsmax) jumps -=1;
-}
-
-if (key_jump) &amp;&amp; (jumps &gt; 0) &amp;&amp; (!key_down)
-{
-    if (jumps == 2)
-    {
-        audio_play_sound(sound_jump1,1,0)
-    }
-    if (jumps == 1)
-    {
-        instance_create(obj_player.x+0,obj_player.y+32,obj_doubleJumpFX)
-        audio_play_sound(sound_jump2,1,0)
-    }
-    jumps -= 1;
-    vsp = -jumpspeed;
-}
-
-if (vsp &lt; 0) &amp;&amp; (!key_jump_held) vsp = max(vsp,-jumpspeed/2)
-
-if (key_down)
-{
-    if !audio_is_playing(snd_wind)
-    {
-        audio_play_sound(snd_wind,1,0);
-    }
-    vsp = VDashSpeed
-    dash = 1;
-    jumps = 0;
-    DrawTrail = true;
-}
-
-var hsp_final = hsp + hsp_carry;
-hsp_carry = 0;
-
-//Horizontal Collision
-if (place_meeting(x+hsp_final,y,obj_wall))
-{
-    while(!place_meeting(x+sign(hsp_final),y,obj_wall))
-    {
-        x += sign(hsp_final);
-    }
-    hsp_final = 0;
-    hsp = 0;
-}
-x += hsp_final;
-
-//Vertical Collision
-if (place_meeting(x,y+vsp,obj_wall))
-
-{
-    
-    while(!place_meeting(x,y+sign(vsp),obj_wall))
-    {
-        y += sign(vsp);
-        if (dash = 1)
-        {
-            alarm[0] = 1
-        }
-    }
-    audio_stop_sound(snd_wind);
-    vsp = 0;
-    dash = 0;
-}
-y += vsp;
-// other player collisioon horizontal
-if (place_meeting(x+hsp_final,y,obj_player2))
-{
-        hsp = -hsp    
-}
-
-
-
-// other player collision vertical
-if (place_meeting(x,y+vsp,obj_player2))
-{
-    if vsp &gt; 0
-    if (dash == 1)
-    {
-    with (obj_player2) script_execute(scr_player2ded);
-    }
-    else
-    {
-    vsp = -jumpspeed;
-    }
-
-}
-// Collison with kill plain
-if (place_meeting(x, y, obj_killPlain))
-{
-    scr_player2dedKP();
-}
-
-
-//Animate
-if (move!=0) image_xscale = move;
-if (place_meeting(x,y+1,obj_wall))
-{
-    if (move!=0) 
-    {
-        sprite_index = sprite_run; 
-        image_speed = imageSpeed;
-    }
-    else if (sprite_index != sprite_dash) sprite_index = sprite_idle; image_speed = imageSpeed / 2;
-    angle = 0;
-}
-else
-{
-    if (vsp &lt; 0) sprite_index = sprite_jump; else if (dash = 1) sprite_index = sprite_dash; else sprite_index = sprite_fall;
-    
-    var angleDest = 30;
-    if(jumps == 0) angleDest += 20;
-     
-    angle = lerp(angle, -move * angleDest, 0.2);
-}
-// Control the footstep sounds
-if (sprite_index = sprite_run)
-{
-    ii = floor(image_index);
-    if (ii != iiPrev)
-    {
-        if (ii == stepFrame1)
-        {
-            audio_play_sound(snd_footstep1, 1, 0);
-        }
-        else if (ii == stepFrame2)
-        {
-            audio_play_sound(snd_footstep2, 1, 0);
-        }
-    }
-    iiPrev = ii;
-}
-}
-
-if (vsp == VDashSpeed)
-{
-    if !audio_is_playing(snd_wind)
-    {
-    audio_play_sound(snd_wind,1,0);
-    }
-}
-
-if place_meeting(x,y,obj_shockwave2)
-{
-scr_playerded();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_shockwave2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>scr_playerded();
 </string>
           </argument>
         </arguments>
@@ -503,32 +756,7 @@ scr_playerded();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, angle, image_blend, image_alpha); 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="82">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_goto(rm_menuMain);
-global.Player1Score = 0;
-global.Player2Score = 0;
+            <string>draw_sprite_ext(sprite_index, image_index, x, y, spriteScaleX * image_xscale, spriteScaleY * image_yscale, angle, image_blend, image_alpha); 
 </string>
           </argument>
         </arguments>

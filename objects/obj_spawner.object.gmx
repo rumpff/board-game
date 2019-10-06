@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>if global.GameStart == true
 {
-    instance_create(obj_player1Spawn.x,obj_player1Spawn.y, obj_player);
-    instance_create(obj_player2Spawn.x,obj_player2Spawn.y, obj_player2);
+    CreatePlayer(0, obj_player1Spawn.x, obj_player1Spawn.y);
+    CreatePlayer(1, obj_player2Spawn.x, obj_player2Spawn.y);
     instance_destroy();
 }
 </string>
